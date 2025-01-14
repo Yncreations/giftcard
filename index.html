@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Gift Card Giveaway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .card-info, .card-code {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .card-info {
+            font-weight: bold;
+        }
+        .note {
+            font-size: 14px;
+            color: #555;
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Exclusive Gift Card Giveaway!</h1>
+    <p>Click the button below to claim your prize!</p>
+    <button id="generateButton" class="button" onclick="generateCard()">Claim Your Gift Card</button>
+    
+    <div id="giftCardInfo" class="card-info"></div>
+    <div id="giftCardCode" class="card-code"></div>
+
+    <div id="redeemNote" class="note"></div>
+</div>
+
+<script>
+    function generateCard() {
+        const giftCardTypes = [
+            {type: "Amazon", value: "$50", redeem: "Redeem at www.amazon.com/redeem"},
+            {type: "iTunes", value: "$25", redeem: "Redeem in the iTunes or Apple Music app."},
+            {type: "Google Play", value: "$100", redeem: "Redeem at play.google.com/redeem"},
+            {type: "Steam", value: "$75", redeem: "Redeem at steam.com/redeem"},
+            {type: "Netflix", value: "$10", redeem: "Redeem at www.netflix.com/redeem"},
+            {type: "Spotify", value: "$30", redeem: "Redeem at www.spotify.com/redeem"},
+            {type: "Visa Prepaid", value: "$200", redeem: "Redeem wherever Visa cards are accepted."},
+            {type: "PlayStation", value: "$60", redeem: "Redeem at store.playstation.com/redeem"},
+            {type: "Xbox", value: "$50", redeem: "Redeem at redeem.microsoft.com"},
+            {type: "Starbucks", value: "$20", redeem: "Redeem in any Starbucks store or at www.starbucks.com/redeem"}
+        ];
+        
+        const fakeCodes = [
+            "GC-1234-5678-9012", "GC-9876-5432-1000", "GC-4567-8901-2345", "GC-6789-0123-4567", "GC-1111-2222-3333",
+            "GC-2345-6789-1012", "GC-8765-4321-5678", "GC-3456-7890-1234", "GC-7654-1234-8765", "GC-4321-8765-2345",
+            "GC-9876-1234-5678", "GC-2345-9876-3456", "GC-6789-2345-9876", "GC-1111-4444-7777", "GC-9999-2222-8888"
+        ];
+        
+        const randomType = giftCardTypes[Math.floor(Math.random() * giftCardTypes.length)];
+        const randomCode = fakeCodes[Math.floor(Math.random() * fakeCodes.length)];
+        
+        document.getElementById("giftCardInfo").textContent = `Gift Card Type: ${randomType.type} | Value: ${randomType.value}`;
+        document.getElementById("giftCardCode").textContent = `Your Code: ${randomCode}`;
+        document.getElementById("redeemNote").textContent = `To redeem your gift card: ${randomType.redeem}`;
+        
+        // Disable the button after generating a gift card
+        document.getElementById("generateButton").disabled = true;
+        document.getElementById("generateButton").textContent = "You've already claimed your gift card!";
+    }
+</script>
+
+</body>
+</html>
